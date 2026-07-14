@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的財報隔日沖紀錄</title>
+
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 42px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin-top: 18px;
+      color: #e5e7eb;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: #64748b;
+      font-weight: normal;
+    }
+
+    .value {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .profit {
+      color: #16a34a;
+    }
+
+    .loss {
+      color: #dc2626;
+    }
+
+    .section-title {
+      margin: 30px 0 14px;
+      font-size: 22px;
+      color: #111827;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      margin-bottom: 26px;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #e5e7eb;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .stock-link {
+      color: #2563eb;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .empty-text {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .modal {
+      background: white;
+      max-width: 620px;
+      width: 100%;
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .modal h2 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    .modal p {
+      line-height: 1.7;
+    }
+
+    .sa-rating-table {
+      width: 100%;
+      margin-top: 12px;
+      margin-bottom: 0;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: none;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .sa-rating-table th {
+      background: #f8fafc;
+      color: #475569;
+      font-size: 13px;
+      padding: 10px 6px;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .sa-rating-table td {
+      padding: 12px 6px;
+      text-align: center;
+      border-bottom: none;
+    }
+
+    .rating-badge {
+      display: inline-block;
+      min-width: 42px;
+      padding: 5px 8px;
+      font-weight: bold;
+      color: white;
+      border-radius: 2px;
+      font-size: 14px;
+    }
+
+    .grade-a {
+      background: #14532d;
+    }
+
+    .grade-b {
+      background: #2f6f3e;
+    }
+
+    .grade-c {
+      background: #facc15;
+      color: #111827;
+    }
+
+    .grade-d {
+      background: #dc2626;
+    }
+
+    .grade-f {
+      background: #991b1b;
+    }
+
+    .grade-empty {
+      background: #94a3b8;
+    }
+
+    .close-btn {
+      margin-top: 18px;
+      padding: 10px 18px;
+      border: none;
+      background: #111827;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .close-btn:hover {
+      background: #374151;
+    }
+
+    @media (max-width: 900px) {
+      .summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      table {
+        font-size: 14px;
+      }
+
+      th, td {
+        padding: 12px 8px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .sa-rating-table {
+        display: table;
+        white-space: normal;
+      }
+
+      header h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>我的財報隔日沖紀錄</h1>
+    <p>短線持股、買賣價位、損益與交易理由</p>
+  </header>
+
+  <div class="container">
+    <section class="summary">
+      <div class="card">
+        <h3>至今總收益</h3>
+        <div class="value" id="totalProfit">$0</div>
+      </div>
+
+      <div class="card">
+        <h3>交易次數</h3>
+        <div class="value" id="totalTrades">0</div>
+      </div>
+
+      <div class="card">
+        <h3>勝率</h3>
+        <div class="value" id="winRate">0%</div>
+      </div>
+
+      <div class="card">
+        <h3>平均每筆損益</h3>
+        <div class="value" id="avgProfit">$0</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">今日新增股票們</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>買進股票</th>
+          <th>買進價位</th>
+          <th>股數</th>
+          <th>買進總價</th>
+        </tr>
+      </thead>
+
+      <tbody id="todayTable"></tbody>
+    </table>
+
+    <h2 class="section-title">過往交易紀錄</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>買進股票</th>
+          <th>買進價位</th>
+          <th>股數</th>
+          <th>買進總價</th>
+          <th>賣出價位</th>
+          <th>損益</th>
+        </tr>
+      </thead>
+
+      <tbody id="tradeTable"></tbody>
+    </table>
+  </div>
+
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <h2 id="modalTitle"></h2>
+
+      <p id="modalDesc"></p>
+
+      <p><strong>交易理由：</strong></p>
+      <p id="modalReason"></p>
+
+      <p><strong>SA 五項評級：</strong></p>
+
+      <table class="sa-rating-table">
+        <thead>
+          <tr>
+            <th>Valuation</th>
+            <th>Growth</th>
+            <th>Profitability</th>
+            <th>Momentum</th>
+            <th>EPS Rev.</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><span id="ratingValuation" class="rating-badge">-</span></td>
+            <td><span id="ratingGrowth" class="rating-badge">-</span></td>
+            <td><span id="ratingProfitability" class="rating-badge">-</span></td>
+            <td><span id="ratingMomentum" class="rating-badge">-</span></td>
+            <td><span id="ratingEpsRev" class="rating-badge">-</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="close-btn" onclick="closeModal()">關閉</button>
+    </div>
+  </div>
+
+  <script src="today-data.js"></script>
+  <script src="trades-data.js"></script>
+
+  <script>
+    const todayStocksData = typeof todayStocks !== "undefined" ? todayStocks : [];
+    const tradesData = typeof trades !== "undefined" ? trades : [];
+
+    function renderTodayTable() {
+      const todayTable = document.getElementById("todayTable");
+      todayTable.innerHTML = "";
+
+      if (todayStocksData.length === 0) {
+        todayTable.innerHTML = `
+          <tr>
+            <td colspan="5" class="empty-text">目前沒有今日新增股票。</td>
+          </tr>
+        `;
+        return;
+      }
+
+      todayStocksData.forEach((stock, index) => {
+        const buyTotal = stock.buyPrice * stock.shares;
+
+        todayTable.innerHTML += `
+          <tr>
+            <td>${stock.date}</td>
+            <td>
+              <span class="stock-link" onclick="openStockModal(todayStocksData[${index}])">
+                ${stock.stock}
+              </span>
+            </td>
+            <td>$${stock.buyPrice}</td>
+            <td>${stock.shares}</td>
+            <td>$${buyTotal.toFixed(2)}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function renderTradeTable() {
+      const tradeTable = document.getElementById("tradeTable");
+      tradeTable.innerHTML = "";
+
+      if (tradesData.length === 0) {
+        tradeTable.innerHTML = `
+          <tr>
+            <td colspan="7" class="empty-text">目前沒有過往交易。</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tradesData.forEach((trade, index) => {
+        const buyTotal = trade.buyPrice * trade.shares;
+        const profit = (trade.sellPrice - trade.buyPrice) * trade.shares;
+        const profitPercent = buyTotal > 0 ? (profit / buyTotal) * 100 : 0;
+
+        const profitClass = profit >= 0 ? "profit" : "loss";
+
+        const profitText = profit >= 0
+          ? `+$${profit.toFixed(2)}`
+          : `-$${Math.abs(profit).toFixed(2)}`;
+
+        const percentText = profitPercent >= 0
+          ? `+${profitPercent.toFixed(2)}%`
+          : `${profitPercent.toFixed(2)}%`;
+
+        tradeTable.innerHTML += `
+          <tr>
+            <td>${trade.date}</td>
+            <td>
+              <span class="stock-link" onclick="openStockModal(tradesData[${index}])">
+                ${trade.stock}
+              </span>
+            </td>
+            <td>$${trade.buyPrice}</td>
+            <td>${trade.shares}</td>
+            <td>$${buyTotal.toFixed(2)}</td>
+            <td>$${trade.sellPrice}</td>
+            <td class="${profitClass}">${profitText} (${percentText})</td>
+          </tr>
+        `;
+      });
+    }
+
+    function renderSummary() {
+      const profits = tradesData.map(trade => {
+        return (trade.sellPrice - trade.buyPrice) * trade.shares;
+      });
+
+      const totalProfit = profits.reduce((sum, p) => sum + p, 0);
+      const totalTrades = tradesData.length;
+      const wins = profits.filter(p => p > 0).length;
+      const winRate = totalTrades > 0 ? (wins / totalTrades) * 100 : 0;
+      const avgProfit = totalTrades > 0 ? totalProfit / totalTrades : 0;
+
+      document.getElementById("totalProfit").textContent =
+        totalProfit >= 0
+          ? `+$${totalProfit.toFixed(2)}`
+          : `-$${Math.abs(totalProfit).toFixed(2)}`;
+
+      document.getElementById("totalProfit").className =
+        totalProfit >= 0 ? "value profit" : "value loss";
+
+      document.getElementById("totalTrades").textContent = totalTrades;
+      document.getElementById("winRate").textContent = `${winRate.toFixed(1)}%`;
+
+      document.getElementById("avgProfit").textContent =
+        avgProfit >= 0
+          ? `+$${avgProfit.toFixed(2)}`
+          : `-$${Math.abs(avgProfit).toFixed(2)}`;
+
+      document.getElementById("avgProfit").className =
+        avgProfit >= 0 ? "value profit" : "value loss";
+    }
+
+    function getRatingClass(grade) {
+      if (!grade) {
+        return "grade-empty";
+      }
+
+      const firstLetter = grade.trim().charAt(0).toUpperCase();
+
+      if (firstLetter === "A") {
+        return "grade-a";
+      }
+
+      if (firstLetter === "B") {
+        return "grade-b";
+      }
+
+      if (firstLetter === "C") {
+        return "grade-c";
+      }
+
+      if (firstLetter === "D") {
+        return "grade-d";
+      }
+
+      if (firstLetter === "F") {
+        return "grade-f";
+      }
+
+      return "grade-empty";
+    }
+
+    function setRating(elementId, grade) {
+      const element = document.getElementById(elementId);
+
+      element.textContent = grade || "-";
+      element.className = "rating-badge " + getRatingClass(grade);
+    }
+
+    function openStockModal(stockData) {
+      document.getElementById("modalTitle").textContent = stockData.stock || "-";
+      document.getElementById("modalDesc").textContent = stockData.desc || "尚未填寫簡介。";
+      document.getElementById("modalReason").textContent = stockData.reason || "尚未填寫交易理由。";
+
+      const ratings = stockData.ratings || {};
+
+      setRating("ratingValuation", ratings.valuation);
+      setRating("ratingGrowth", ratings.growth);
+      setRating("ratingProfitability", ratings.profitability);
+      setRating("ratingMomentum", ratings.momentum);
+      setRating("ratingEpsRev", ratings.epsRev);
+
+      document.getElementById("modalBg").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modalBg").style.display = "none";
+    }
+
+    document.getElementById("modalBg").addEventListener("click", function(event) {
+      if (event.target === this) {
+        closeModal();
+      }
+    });
+
+    renderTodayTable();
+    renderTradeTable();
+    renderSummary();
+  </script>
+</body>
+</html>
