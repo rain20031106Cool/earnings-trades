@@ -21,7 +21,7 @@ const trades = [
 
 
   {
-    date: "2026/07/13",
+    date: "2026/07/13成功成功",
     stock: "BAC",
     buyPrice: 59.2,
     shares: 33,
