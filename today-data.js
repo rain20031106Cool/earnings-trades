@@ -1,33 +1,49 @@
 const todayStocks = [
   {
-    date: "我等等睡醒會買賣 可能今天是買UAL跟TSM吧",
-    stock: "PNC",
-    buyPrice: 256,
-    shares: 6,
-    desc: "Strong Buy",
-    reason: "有個問題是波動率極低，我想這隻不買也罷？",
+    date: "2026/07/15",
+    stock: "UAL",
+    buyPrice: 122,
+    shares: 14,
+    desc: "Buy",
+    reason: "雖然我覺得他很綁定DAL的財報關係，但我覺得他的成長性滿大的。",
     ratings: {
-      valuation: "C-",
-      growth: "C+",
-      profitability: "A",
+      valuation: "A-",
+      growth: "C-",
+      profitability: "A+",
       momentum: "B+",
-      epsRev: "B"
+      epsRev: "B-"
     }
   },
 
   {
-    date: "2026/07/14",
-    stock: "ASMU",
-    buyPrice: 33.3,
-    shares: 33,
-    desc: "Hold",
-    reason: "ASML我認為是一間不錯的公司，但評級普普通通，所以買的不多，參數除了Valuation都長得不錯，我想因為這樣才被評為hold。",
+    date: "2026/07/15",
+    stock: "UNHG",
+    buyPrice: 23.5,
+    shares: 54,
+    desc: "HOLD",
+    reason: "UNH雖然整體的估值跟成長性不佳，但我覺得EPS和momentum、profitability看起來不錯就可以表現好。",
     ratings: {
-      valuation: "F",
-      growth: "B+",
+      valuation: "D-",
+      growth: "F",
       profitability: "A+",
       momentum: "B+",
-      epsRev: "B"
+      epsRev: "A-"
+    }
+  },
+
+    {
+    date: "2026/07/15",
+    stock: "TSMX",
+    buyPrice: 80,
+    shares: 51,
+    desc: "HOLD。",
+    reason: "這理論上是買18股(1500美)，但我覺得評級是valuation把它拉垮，實際上應該能表現得不錯。",
+    ratings: {
+      valuation: "D-",
+      growth: "A-",
+      profitability: "A+",
+      momentum: "B",
+      epsRev: "A+"
     }
   }
   /*
