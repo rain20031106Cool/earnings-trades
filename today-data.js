@@ -1,6 +1,6 @@
 const todayStocks = [
   {
-    date: "2026/07/14",
+    date: "我等等睡醒會買賣 可能今天是買UAL跟TSM吧",
     stock: "PNC",
     buyPrice: 256,
     shares: 6,
