@@ -19,7 +19,7 @@ const trades = [
 },
 */
   {
-    date: "2026/07/16",
+    date: "2026/07/14",
     stock: "PNC",
     buyPrice: 256,
     shares: 6,
