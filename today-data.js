@@ -37,7 +37,7 @@ const todayStocks = [
     buyPrice: 80,
     shares: 51,
     desc: "HOLD。",
-    reason: "這理論上是買18股(1500美)，但我覺得評級是valuation把它拉垮，實際上應該能表現得不錯。",
+    reason: "TSM這理論上是買18股(1500美)，但我覺得評級是valuation把它拉垮，實際上應該能表現得不錯。",
     ratings: {
       valuation: "D-",
       growth: "A-",
