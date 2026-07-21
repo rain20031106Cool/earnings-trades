@@ -18,8 +18,8 @@ const todayStocks = [
     {
     date: "2026/07/20",
     stock: "GM",
-    buyPrice: 159,
-    shares: 76.4,
+    buyPrice: 76.4,
+    shares: 159,
     desc: "Strong Buy",
     reason: "通用汽車屬於穩定的股票，漲幅不大但我依策略進行，不然其實會想要All in VICR。",
     ratings: {
