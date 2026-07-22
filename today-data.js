@@ -35,7 +35,7 @@ const todayStocks = [
     date: "2026/07/22",
     stock: "STM",
     buyPrice: 66.17,
-    shares: 204,
+    shares: 181,
     desc: "Strong Buy",
     reason: "推特白毛股神推薦過的股票，評級不錯，沾上半導體，我覺得有上漲空間。",
     ratings: {
