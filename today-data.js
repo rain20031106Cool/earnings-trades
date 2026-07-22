@@ -1,35 +1,52 @@
 const todayStocks = [
   {
-    date: "2026/07/20",
-    stock: "VICR",
-    buyPrice: 240,
-    shares: 61,
+    date: "2026/07/22",
+    stock: "RTXG",
+    buyPrice: 23.5,
+    shares: 256,
     desc: "Strong Buy",
-    reason: "半導體數一數二強的股票，我認為會暴漲。",
+    reason: "雷神科技是老牌國防股票，雖然評級幾乎都是HOLDING，但獲利能力有顯著的表現，可惜估值比較高。",
     ratings: {
       valuation: "D",
-      growth: "A+",
-      profitability: "B-",
-      momentum: "A+",
-      epsRev: "A-"
+      growth: "C-",
+      profitability: "A+",
+      momentum: "B-",
+      epsRev: "B"
     }
   },
 
-    {
-    date: "2026/07/20",
-    stock: "GM",
-    buyPrice: 76.4,
-    shares: 159,
+  {
+    date: "2026/07/22",
+    stock: "AALG",
+    buyPrice: 14.1,
+    shares: 426,
     desc: "Strong Buy",
-    reason: "通用汽車屬於穩定的股票，漲幅不大但我依策略進行，不然其實會想要All in VICR。",
+    reason: "評級全對，相當值得購買！",
     ratings: {
-      valuation: "B-",
-      growth: "B+",
-      profitability: "A+",
-      momentum: "B",
-      epsRev: "B+"
+      valuation: "A+",
+      growth: "A+",
+      profitability: "A-",
+      momentum: "B+",
+      epsRev: "B-"
+    }
+  },
+
+  {
+    date: "2026/07/22",
+    stock: "STM",
+    buyPrice: 66.17,
+    shares: 204,
+    desc: "Strong Buy",
+    reason: "推特白毛股神推薦過的股票，評級不錯，沾上半導體，我覺得有上漲空間。",
+    ratings: {
+      valuation: "D",
+      growth: "A",
+      profitability: "C",
+      momentum: "A",
+      epsRev: "C"
     }
   }
+
 
 
   /*
