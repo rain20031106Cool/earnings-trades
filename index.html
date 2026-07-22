@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>我的財報隔日沖紀錄</title>
 
   <style>
@@ -48,7 +49,7 @@
       background: white;
       border-radius: 14px;
       padding: 22px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       text-align: center;
     }
 
@@ -84,11 +85,12 @@
       background: white;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       margin-bottom: 26px;
     }
 
-    th, td {
+    th,
+    td {
       padding: 15px;
       text-align: center;
       border-bottom: 1px solid #e5e7eb;
@@ -122,7 +124,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0, 0, 0, 0.45);
       justify-content: center;
       align-items: center;
       padding: 20px;
@@ -135,7 +137,7 @@
       width: 100%;
       border-radius: 16px;
       padding: 26px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .modal h2 {
@@ -145,6 +147,44 @@
 
     .modal p {
       line-height: 1.7;
+    }
+
+    /* desc 股票建議的彩色框框 */
+    #modalDesc {
+      display: inline-block;
+      margin: 4px 0 14px;
+      padding: 8px 14px;
+      border: 2px solid;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* Strong Buy：深綠色 */
+    .desc-strong-buy {
+      background: #14532d;
+      border-color: #14532d;
+      color: white;
+    }
+
+    /* Buy：淺綠色 */
+    .desc-buy {
+      background: #bbf7d0;
+      border-color: #4ade80;
+      color: #14532d;
+    }
+
+    /* Hold：黃色 */
+    .desc-hold {
+      background: #facc15;
+      border-color: #eab308;
+      color: #111827;
+    }
+
+    /* 其他內容：灰色 */
+    .desc-default {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+      color: #334155;
     }
 
     .sa-rating-table {
@@ -232,7 +272,8 @@
         font-size: 14px;
       }
 
-      th, td {
+      th,
+      td {
         padding: 12px 8px;
       }
     }
@@ -268,6 +309,7 @@
 
   <div class="container">
     <section class="summary">
+
       <div class="card">
         <h3>至今總收益</h3>
         <div class="value" id="totalProfit">$0</div>
@@ -287,6 +329,7 @@
         <h3>平均每筆損益</h3>
         <div class="value" id="avgProfit">$0</div>
       </div>
+
     </section>
 
     <h2 class="section-title">今日新增股票們</h2>
@@ -324,16 +367,23 @@
     </table>
   </div>
 
+  <!-- 股票詳細資料視窗 -->
   <div class="modal-bg" id="modalBg">
     <div class="modal">
+
       <h2 id="modalTitle"></h2>
 
       <p id="modalDesc"></p>
 
-      <p><strong>交易理由：</strong></p>
+      <p>
+        <strong>交易理由：</strong>
+      </p>
+
       <p id="modalReason"></p>
 
-      <p><strong>SA 五項評級：</strong></p>
+      <p>
+        <strong>SA 五項評級：</strong>
+      </p>
 
       <table class="sa-rating-table">
         <thead>
@@ -348,36 +398,62 @@
 
         <tbody>
           <tr>
-            <td><span id="ratingValuation" class="rating-badge">-</span></td>
-            <td><span id="ratingGrowth" class="rating-badge">-</span></td>
-            <td><span id="ratingProfitability" class="rating-badge">-</span></td>
-            <td><span id="ratingMomentum" class="rating-badge">-</span></td>
-            <td><span id="ratingEpsRev" class="rating-badge">-</span></td>
+            <td>
+              <span id="ratingValuation" class="rating-badge">-</span>
+            </td>
+
+            <td>
+              <span id="ratingGrowth" class="rating-badge">-</span>
+            </td>
+
+            <td>
+              <span id="ratingProfitability" class="rating-badge">-</span>
+            </td>
+
+            <td>
+              <span id="ratingMomentum" class="rating-badge">-</span>
+            </td>
+
+            <td>
+              <span id="ratingEpsRev" class="rating-badge">-</span>
+            </td>
           </tr>
         </tbody>
       </table>
 
-      <button class="close-btn" onclick="closeModal()">關閉</button>
+      <button class="close-btn" onclick="closeModal()">
+        關閉
+      </button>
+
     </div>
   </div>
 
-<script src="today-data.js?v=2"></script>
-<script src="trades-data.js?v=2"></script>
+  <!-- 股票資料 -->
+  <script src="today-data.js"></script>
+  <script src="trades-data.js"></script>
 
   <script>
-    const todayStocksData = typeof todayStocks !== "undefined" ? todayStocks : [];
-    const tradesData = typeof trades !== "undefined" ? trades : [];
+    const todayStocksData =
+      typeof todayStocks !== "undefined" ? todayStocks : [];
 
+    const tradesData =
+      typeof trades !== "undefined" ? trades : [];
+
+    /* 顯示今日新增股票 */
     function renderTodayTable() {
       const todayTable = document.getElementById("todayTable");
+
       todayTable.innerHTML = "";
 
       if (todayStocksData.length === 0) {
         todayTable.innerHTML = `
           <tr>
-            <td colspan="5" class="empty-text">目前沒有今日新增股票。</td>
+            <td colspan="5" class="empty-text">
+              目前沒有今日新增股票。
+            </td>
           </tr>
         `;
+
         return;
       }
 
@@ -387,11 +463,16 @@
         todayTable.innerHTML += `
           <tr>
             <td>${stock.date}</td>
+
             <td>
-              <span class="stock-link" onclick="openStockModal(todayStocksData[${index}])">
+              <span
+                class="stock-link"
+                onclick="openStockModal(todayStocksData[${index}])"
+              >
                 ${stock.stock}
               </span>
             </td>
+
             <td>$${stock.buyPrice}</td>
             <td>${stock.shares}</td>
             <td>$${buyTotal.toFixed(2)}</td>
@@ -400,62 +481,101 @@
       });
     }
 
+    /* 顯示過往交易 */
     function renderTradeTable() {
       const tradeTable = document.getElementById("tradeTable");
+
       tradeTable.innerHTML = "";
 
       if (tradesData.length === 0) {
         tradeTable.innerHTML = `
           <tr>
-            <td colspan="7" class="empty-text">目前沒有過往交易。</td>
+            <td colspan="7" class="empty-text">
+              目前沒有過往交易。
+            </td>
           </tr>
         `;
+
         return;
       }
 
       tradesData.forEach((trade, index) => {
         const buyTotal = trade.buyPrice * trade.shares;
-        const profit = (trade.sellPrice - trade.buyPrice) * trade.shares;
-        const profitPercent = buyTotal > 0 ? (profit / buyTotal) * 100 : 0;
 
-        const profitClass = profit >= 0 ? "profit" : "loss";
+        const profit =
+          (trade.sellPrice - trade.buyPrice) * trade.shares;
 
-        const profitText = profit >= 0
-          ? `+$${profit.toFixed(2)}`
-          : `-$${Math.abs(profit).toFixed(2)}`;
+        const profitPercent =
+          buyTotal > 0 ? (profit / buyTotal) * 100 : 0;
 
-        const percentText = profitPercent >= 0
-          ? `+${profitPercent.toFixed(2)}%`
-          : `${profitPercent.toFixed(2)}%`;
+        const profitClass =
+          profit >= 0 ? "profit" : "loss";
+
+        const profitText =
+          profit >= 0
+            ? `+$${profit.toFixed(2)}`
+            : `-$${Math.abs(profit).toFixed(2)}`;
+
+        const percentText =
+          profitPercent >= 0
+            ? `+${profitPercent.toFixed(2)}%`
+            : `${profitPercent.toFixed(2)}%`;
 
         tradeTable.innerHTML += `
           <tr>
             <td>${trade.date}</td>
+
             <td>
-              <span class="stock-link" onclick="openStockModal(tradesData[${index}])">
+              <span
+                class="stock-link"
+                onclick="openStockModal(tradesData[${index}])"
+              >
                 ${trade.stock}
               </span>
             </td>
+
             <td>$${trade.buyPrice}</td>
             <td>${trade.shares}</td>
             <td>$${buyTotal.toFixed(2)}</td>
             <td>$${trade.sellPrice}</td>
-            <td class="${profitClass}">${profitText} (${percentText})</td>
+
+            <td class="${profitClass}">
+              ${profitText} (${percentText})
+            </td>
           </tr>
         `;
       });
     }
 
+    /* 計算上方總收益、勝率等資料 */
     function renderSummary() {
-      const profits = tradesData.map(trade => {
-        return (trade.sellPrice - trade.buyPrice) * trade.shares;
+      const profits = tradesData.map((trade) => {
+        return (
+          (trade.sellPrice - trade.buyPrice) *
+          trade.shares
+        );
       });
 
-      const totalProfit = profits.reduce((sum, p) => sum + p, 0);
+      const totalProfit = profits.reduce(
+        (sum, profit) => sum + profit,
+        0
+      );
+
       const totalTrades = tradesData.length;
-      const wins = profits.filter(p => p > 0).length;
-      const winRate = totalTrades > 0 ? (wins / totalTrades) * 100 : 0;
-      const avgProfit = totalTrades > 0 ? totalProfit / totalTrades : 0;
+
+      const wins = profits.filter(
+        (profit) => profit > 0
+      ).length;
+
+      const winRate =
+        totalTrades > 0
+          ? (wins / totalTrades) * 100
+          : 0;
+
+      const avgProfit =
+        totalTrades > 0
+          ? totalProfit / totalTrades
+          : 0;
 
       document.getElementById("totalProfit").textContent =
         totalProfit >= 0
@@ -463,10 +583,15 @@
           : `-$${Math.abs(totalProfit).toFixed(2)}`;
 
       document.getElementById("totalProfit").className =
-        totalProfit >= 0 ? "value profit" : "value loss";
+        totalProfit >= 0
+          ? "value profit"
+          : "value loss";
 
-      document.getElementById("totalTrades").textContent = totalTrades;
-      document.getElementById("winRate").textContent = `${winRate.toFixed(1)}%`;
+      document.getElementById("totalTrades").textContent =
+        totalTrades;
+
+      document.getElementById("winRate").textContent =
+        `${winRate.toFixed(1)}%`;
 
       document.getElementById("avgProfit").textContent =
         avgProfit >= 0
@@ -474,15 +599,19 @@
           : `-$${Math.abs(avgProfit).toFixed(2)}`;
 
       document.getElementById("avgProfit").className =
-        avgProfit >= 0 ? "value profit" : "value loss";
+        avgProfit >= 0
+          ? "value profit"
+          : "value loss";
     }
 
+    /* 判斷 SA 評級顏色 */
     function getRatingClass(grade) {
       if (!grade) {
         return "grade-empty";
       }
 
-      const firstLetter = grade.trim().charAt(0).toUpperCase();
+      const firstLetter =
+        grade.trim().charAt(0).toUpperCase();
 
       if (firstLetter === "A") {
         return "grade-a";
@@ -507,38 +636,118 @@
       return "grade-empty";
     }
 
+    /* 設定 SA 評級 */
     function setRating(elementId, grade) {
-      const element = document.getElementById(elementId);
+      const element =
+        document.getElementById(elementId);
 
       element.textContent = grade || "-";
-      element.className = "rating-badge " + getRatingClass(grade);
+
+      element.className =
+        "rating-badge " + getRatingClass(grade);
     }
 
+    /* 判斷 desc 的顏色 */
+    function getDescClass(desc) {
+      const normalizedDesc = String(desc || "")
+        .trim()
+        .toLowerCase()
+
+        /* 移除句尾的標點符號 */
+        .replace(/[。.!！?？]+$/g, "")
+
+        /* 多個空格變成一個空格 */
+        .replace(/\s+/g, " ");
+
+      if (normalizedDesc === "strong buy") {
+        return "desc-strong-buy";
+      }
+
+      if (normalizedDesc === "buy") {
+        return "desc-buy";
+      }
+
+      if (normalizedDesc === "hold") {
+        return "desc-hold";
+      }
+
+      return "desc-default";
+    }
+
+    /* 顯示 desc 並加上顏色 */
+    function setDesc(desc) {
+      const modalDesc =
+        document.getElementById("modalDesc");
+
+      const descText =
+        desc || "尚未填寫簡介。";
+
+      modalDesc.textContent = descText;
+
+      modalDesc.className =
+        getDescClass(descText);
+    }
+
+    /* 開啟股票詳細資料 */
     function openStockModal(stockData) {
-      document.getElementById("modalTitle").textContent = stockData.stock || "-";
-      document.getElementById("modalDesc").textContent = stockData.desc || "尚未填寫簡介。";
-      document.getElementById("modalReason").textContent = stockData.reason || "尚未填寫交易理由。";
+      document.getElementById(
+        "modalTitle"
+      ).textContent = stockData.stock || "-";
+
+      setDesc(stockData.desc);
+
+      document.getElementById(
+        "modalReason"
+      ).textContent =
+        stockData.reason || "尚未填寫交易理由。";
 
       const ratings = stockData.ratings || {};
 
-      setRating("ratingValuation", ratings.valuation);
-      setRating("ratingGrowth", ratings.growth);
-      setRating("ratingProfitability", ratings.profitability);
-      setRating("ratingMomentum", ratings.momentum);
-      setRating("ratingEpsRev", ratings.epsRev);
+      setRating(
+        "ratingValuation",
+        ratings.valuation
+      );
 
-      document.getElementById("modalBg").style.display = "flex";
+      setRating(
+        "ratingGrowth",
+        ratings.growth
+      );
+
+      setRating(
+        "ratingProfitability",
+        ratings.profitability
+      );
+
+      setRating(
+        "ratingMomentum",
+        ratings.momentum
+      );
+
+      setRating(
+        "ratingEpsRev",
+        ratings.epsRev
+      );
+
+      document.getElementById(
+        "modalBg"
+      ).style.display = "flex";
     }
 
+    /* 關閉股票詳細資料 */
     function closeModal() {
-      document.getElementById("modalBg").style.display = "none";
+      document.getElementById(
+        "modalBg"
+      ).style.display = "none";
     }
 
-    document.getElementById("modalBg").addEventListener("click", function(event) {
-      if (event.target === this) {
-        closeModal();
-      }
-    });
+    /* 點視窗外面也能關閉 */
+    document
+      .getElementById("modalBg")
+      .addEventListener("click", function (event) {
+        if (event.target === this) {
+          closeModal();
+        }
+      });
 
     renderTodayTable();
     renderTradeTable();
