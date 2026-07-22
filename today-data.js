@@ -45,6 +45,22 @@ const todayStocks = [
       momentum: "A",
       epsRev: "C"
     }
+  },
+
+     {
+    date: "2026/07/22",
+    stock: "LNOK",
+    buyPrice: 38.17,
+    shares: 40,
+    desc: "Hold",
+    reason: "推特白毛股神推薦過的股票，沾上矽光子，碰到點位，評級還可以。",
+    ratings: {
+      valuation: "D-",
+      growth: "D",
+      profitability: "B",
+      momentum: "A-",
+      epsRev: "B-"
+    }
   }
 
 
