@@ -1,68 +1,36 @@
 const todayStocks = [
-  {
-    date: "2026/07/22",
-    stock: "RTXG",
-    buyPrice: 23.5,
-    shares: 256,
-    desc: "Strong Buy",
-    reason: "雷神科技是老牌國防股票，雖然評級幾乎都是HOLDING，但獲利能力有顯著的表現，可惜估值比較高。",
-    ratings: {
-      valuation: "D",
-      growth: "C-",
-      profitability: "A+",
-      momentum: "B-",
-      epsRev: "B"
-    }
-  },
 
   {
-    date: "2026/07/22",
-    stock: "AALG",
-    buyPrice: 14.1,
-    shares: 426,
+    date: "2026/07/23",
+    stock: "INTW",
+    buyPrice: 25.2,
+    shares: 470,
     desc: "Strong Buy",
-    reason: "評級全對，相當值得購買！",
+    reason: "INTC是沾上政治還有評級相當好的科技股票",
     ratings: {
-      valuation: "A+",
+      valuation: "C-",
       growth: "A+",
       profitability: "A-",
-      momentum: "B+",
-      epsRev: "B-"
+      momentum: "A+",
+      epsRev: "A"
     }
   },
 
-  {
-    date: "2026/07/22",
-    stock: "STM",
-    buyPrice: 66.17,
-    shares: 181,
+    {
+    date: "2026/07/23",
+    stock: "MXL",
+    buyPrice: 90.5,
+    shares: 125,
     desc: "Strong Buy",
-    reason: "推特白毛股神推薦過的股票，評級不錯，沾上半導體，我覺得有上漲空間。",
+    reason: "推薦股，而且他的動能跟EPS表現得相當好。",
     ratings: {
-      valuation: "D",
-      growth: "A",
-      profitability: "C",
-      momentum: "A",
-      epsRev: "C"
-    }
-  },
-
-     {
-    date: "2026/07/22",
-    stock: "LNOK",
-    buyPrice: 38.17,
-    shares: 40,
-    desc: "Hold",
-    reason: "推特白毛股神推薦過的股票，沾上矽光子，碰到點位，評級還可以。",
-    ratings: {
-      valuation: "D-",
-      growth: "D",
-      profitability: "B",
-      momentum: "A-",
-      epsRev: "B-"
+      valuation: "B-",
+      growth: "A+",
+      profitability: "D",
+      momentum: "A+",
+      epsRev: "A+"
     }
   }
-
 
 
   /*
