@@ -18,6 +18,41 @@ const trades = [
   }
 },
 */
+
+  {
+    date: "2026/07/23",
+    stock: "INTW",
+    buyPrice: 25.2,
+    shares: 470,
+    sellPrice: 18.35,
+    desc: "Strong Buy",
+    reason: "INTC是沾上政治還有評級相當好的科技股票",
+    ratings: {
+      valuation: "C-",
+      growth: "A+",
+      profitability: "A-",
+      momentum: "A+",
+      epsRev: "A"
+    }
+  },
+
+    {
+    date: "2026/07/23",
+    stock: "MXL",
+    buyPrice: 90.5,
+    shares: 125,
+    sellPrice: 64.3,
+    desc: "Strong Buy",
+    reason: "推薦股，而且他的動能跟EPS表現得相當好。",
+    ratings: {
+      valuation: "B-",
+      growth: "A+",
+      profitability: "D",
+      momentum: "A+",
+      epsRev: "A+"
+    }
+  },
+
   {
     date: "2026/07/22",
     stock: "RTXG",
