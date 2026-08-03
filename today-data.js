@@ -1,36 +1,53 @@
 const todayStocks = [
 
   {
-    date: "2026/07/23",
-    stock: "INTW",
-    buyPrice: 25.2,
-    shares: 470,
+    date: "2026/08/03",
+    stock: "ONG",
+    buyPrice: 5.38,
+    shares: 2050,
     desc: "Strong Buy",
-    reason: "INTC是沾上政治還有評級相當好的科技股票",
+    reason: "還不錯的半導體公司。",
     ratings: {
-      valuation: "C-",
-      growth: "A+",
+      valuation: "B-",
+      growth: "B",
+      profitability: "A-",
+      momentum: "B",
+      epsRev: "B"
+    }
+  },
+
+  {
+    date: "2026/08/03",
+    stock: "TSEG",
+    buyPrice: 7.36,
+    shares: 1500,
+    desc: "Strong Buy",
+    reason: "強半導體公司，有關光科技的好公司",
+    ratings: {
+      valuation: "D+",
+      growth: "C+",
+      profitability: "B",
+      momentum: "A+",
+      epsRev: "B+"
+    }
+  },
+
+  {
+    date: "2026/08/03",
+    stock: "STRL",
+    buyPrice: 600,
+    shares: 18,
+    desc: "Strong Buy。",
+    reason: "Ai建設的公司，很強悍，但上次財報過度猛，怕這次會回落。",
+    ratings: {
+      valuation: "C+",
+      growth: "A",
       profitability: "A-",
       momentum: "A+",
       epsRev: "A"
     }
-  },
-
-    {
-    date: "2026/07/23",
-    stock: "MXL",
-    buyPrice: 90.5,
-    shares: 125,
-    desc: "Strong Buy",
-    reason: "推薦股，而且他的動能跟EPS表現得相當好。",
-    ratings: {
-      valuation: "B-",
-      growth: "A+",
-      profitability: "D",
-      momentum: "A+",
-      epsRev: "A+"
-    }
   }
+
 
 
   /*
