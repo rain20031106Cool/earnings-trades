@@ -18,6 +18,56 @@ const trades = [
   }
 },
 */
+  {
+    date: "2026/08/03",
+    stock: "ONG",
+    buyPrice: 5.38,
+    shares: 2050,
+    desc: "Strong Buy",
+    sellPrice: 5.28,
+    reason: "還不錯的半導體公司。",
+    ratings: {
+      valuation: "B-",
+      growth: "B",
+      profitability: "A-",
+      momentum: "B",
+      epsRev: "B"
+    }
+  },
+
+  {
+    date: "2026/08/03",
+    stock: "TSEG",
+    buyPrice: 7.36,
+    shares: 1500,
+    desc: "Strong Buy",
+    sellPrice: 9.06,
+    reason: "強半導體公司，有關光科技的好公司",
+    ratings: {
+      valuation: "D+",
+      growth: "C+",
+      profitability: "B",
+      momentum: "A+",
+      epsRev: "B+"
+    }
+  },
+
+  {
+    date: "2026/08/03",
+    stock: "STRL",
+    buyPrice: 600,
+    shares: 18,
+    sellPrice: 540,
+    desc: "Strong Buy。",
+    reason: "Ai建設的公司，很強悍，但上次財報過度猛，怕這次會回落。",
+    ratings: {
+      valuation: "C+",
+      growth: "A",
+      profitability: "A-",
+      momentum: "A+",
+      epsRev: "A"
+    }
+  },
 
   {
     date: "2026/07/23",
