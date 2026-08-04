@@ -1,55 +1,52 @@
 const todayStocks = [
 
   {
-    date: "2026/08/03",
-    stock: "ONG",
-    buyPrice: 5.38,
-    shares: 2050,
+    date: "2026/08/05",
+    stock: "AMDL",
+    buyPrice: 62.5,
+    shares: 180,
     desc: "Strong Buy",
-    reason: "還不錯的半導體公司。",
+    reason: "AMD的價格我想還能噴到600，或許在2030年會有800的價值。",
     ratings: {
-      valuation: "B-",
-      growth: "B",
-      profitability: "A-",
-      momentum: "B",
+      valuation: "C",
+      growth: "A",
+      profitability: "A+",
+      momentum: "A",
       epsRev: "B"
     }
   },
 
-  {
-    date: "2026/08/03",
-    stock: "TSEG",
-    buyPrice: 7.36,
-    shares: 1500,
+    {
+    date: "2026/08/05",
+    stock: "APPS",
+    buyPrice: 9.7,
+    shares: 1111,
     desc: "Strong Buy",
-    reason: "強半導體公司，有關光科技的好公司",
+    reason: "單純參數對了，我還沒有了解這間公司，我找時間了解一下。",
     ratings: {
-      valuation: "D+",
-      growth: "C+",
-      profitability: "B",
-      momentum: "A+",
-      epsRev: "B+"
+      valuation: "B",
+      growth: "B+",
+      profitability: "C-",
+      momentum: "A",
+      epsRev: "A-"
     }
   },
 
-  {
-    date: "2026/08/03",
-    stock: "STRL",
-    buyPrice: 600,
-    shares: 18,
-    desc: "Strong Buy。",
-    reason: "Ai建設的公司，很強悍，但上次財報過度猛，怕這次會回落。",
+    {
+    date: "2026/08/05",
+    stock: "LSCC",
+    buyPrice: 138,
+    shares: 82,
+    desc: "Strong Buy",
+    reason: "單純參數對了，我還沒有了解這間公司，我找時間了解一下。",
     ratings: {
-      valuation: "C+",
-      growth: "A",
-      profitability: "A-",
-      momentum: "A+",
-      epsRev: "A"
+      valuation: "D",
+      growth: "A-",
+      profitability: "B",
+      momentum: "A-",
+      epsRev: "A-"
     }
   }
-
-
-
   /*
 
   {
