@@ -17,7 +17,7 @@ const todayStocks = [
   },
 
     {
-    date: "2026/08/05",
+    date: "2026/08/04",
     stock: "APPS",
     buyPrice: 9.7,
     shares: 1111,
@@ -33,7 +33,7 @@ const todayStocks = [
   },
 
     {
-    date: "2026/08/05",
+    date: "2026/08/04",
     stock: "LSCC",
     buyPrice: 138,
     shares: 82,
@@ -45,6 +45,22 @@ const todayStocks = [
       profitability: "B",
       momentum: "A-",
       epsRev: "A-"
+    }
+  },
+
+    {
+    date: "2026/08/04",
+    stock: "LABX",
+    buyPrice: 17.5,
+    shares: 610,
+    desc: "Strong Buy",
+    reason: "單純參數對了，我還沒有了解這間公司，我找時間了解一下。",
+    ratings: {
+      valuation: "D",
+      growth: "A",
+      profitability: "A-",
+      momentum: "A",
+      epsRev: "B"
     }
   }
   /*
