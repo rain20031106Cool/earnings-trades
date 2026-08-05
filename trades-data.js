@@ -19,7 +19,7 @@ const trades = [
 },
 */
   {
-    date: "2026/08/05",
+    date: "2026/08/04",
     stock: "AMDL",
     buyPrice: 62.5,
     shares: 180,
