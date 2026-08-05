@@ -19,6 +19,74 @@ const trades = [
 },
 */
   {
+    date: "2026/08/05",
+    stock: "AMDL",
+    buyPrice: 62.5,
+    shares: 180,
+    sellPrice: 53.7,    
+    desc: "Strong Buy",
+    reason: "AMD的價格我想還能噴到600，或許在2030年會有800的價值。",
+    ratings: {
+      valuation: "C",
+      growth: "A",
+      profitability: "A+",
+      momentum: "A",
+      epsRev: "B"
+    }
+  },
+
+    {
+    date: "2026/08/04",
+    stock: "APPS",
+    buyPrice: 9.7,
+    shares: 1111,
+    sellPrice: 13.8,  
+    desc: "Strong Buy",
+    reason: "單純參數對了，我還沒有了解這間公司，我找時間了解一下。",
+    ratings: {
+      valuation: "B",
+      growth: "B+",
+      profitability: "C-",
+      momentum: "A",
+      epsRev: "A-"
+    }
+  },
+
+    {
+    date: "2026/08/04",
+    stock: "LSCC",
+    buyPrice: 138,
+    shares: 82,
+    sellPrice: 130,  
+    desc: "Strong Buy",
+    reason: "單純參數對了，我還沒有了解這間公司，我找時間了解一下。",
+    ratings: {
+      valuation: "D",
+      growth: "A-",
+      profitability: "B",
+      momentum: "A-",
+      epsRev: "A-"
+    }
+  },
+
+    {
+    date: "2026/08/04",
+    stock: "LABX",
+    buyPrice: 17.5,
+    shares: 610,
+    sellPrice: 15, 
+    desc: "Strong Buy",
+    reason: "單純參數對了，我還沒有了解這間公司，我找時間了解一下。",
+    ratings: {
+      valuation: "D",
+      growth: "A",
+      profitability: "A-",
+      momentum: "A",
+      epsRev: "B"
+    }
+  },
+
+  {
     date: "2026/08/03",
     stock: "ONG",
     buyPrice: 5.38,
