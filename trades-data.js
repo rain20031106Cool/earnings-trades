@@ -18,6 +18,57 @@ const trades = [
   }
 },
 */
+{
+  date: "2026/08/12",
+  stock: "ONDL",
+  buyPrice: 10.65,
+  shares: 210,
+  sellPrice: null,
+  desc: "Strong Buy",
+  reason: "ONDS是極度好的無人機股票，又有被推薦",
+  ratings: {
+    valuation: "B-",
+    growth: "A+",
+    profitability: "D",
+    momentum: "A-",
+    epsRev: "A"
+  }
+},
+
+  {
+  date: "2026/08/12",
+  stock: "KJD",
+  buyPrice: 20.42,
+  shares: 100,
+  sellPrice: null,
+  desc: "Strong Buy",
+  reason: "京東只是參數剛好對了，我在想會不會不是好股票，因為公司支出過大，而且隱含波動率不高。",
+  ratings: {
+    valuation: "A+",
+    growth: "A",
+    profitability: "A-",
+    momentum: "B-",
+    epsRev: "B"
+  }
+},
+
+  {
+  date: "2026/08/11",
+  stock: "NBIL",
+  buyPrice: 23.4,
+  shares: 150,
+  sellPrice: 29.6,
+  desc: "Strong Buy",
+  reason: "NBIS近期回落很多，很適合購買，又是一個極度強勢的股票板塊。",
+  ratings: {
+    valuation: "C+",
+    growth: "A+",
+    profitability: "B-",
+    momentum: "A",
+    epsRev: "C+"
+  }
+},
+
   {
     date: "2026/08/04",
     stock: "AMDL",
