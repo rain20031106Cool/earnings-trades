@@ -23,7 +23,7 @@ const trades = [
   stock: "ONDL",
   buyPrice: 10.65,
   shares: 210,
-  sellPrice: null,
+  sellPrice: 9.17,
   desc: "Strong Buy",
   reason: "ONDS是極度好的無人機股票，又有被推薦",
   ratings: {
@@ -40,7 +40,7 @@ const trades = [
   stock: "KJD",
   buyPrice: 20.42,
   shares: 100,
-  sellPrice: null,
+  sellPrice: 19.54,
   desc: "Strong Buy",
   reason: "京東只是參數剛好對了，我在想會不會不是好股票，因為公司支出過大，而且隱含波動率不高。",
   ratings: {
